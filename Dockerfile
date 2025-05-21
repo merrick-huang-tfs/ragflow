@@ -155,16 +155,18 @@ RUN --mount=type=cache,id=ragflow_uv,target=/root/.cache/uv,sharing=locked \
     else \
         sed -i 's|mirrors.aliyun.com/pypi|pypi.org|g' uv.lock; \
     fi; \
+    # 增加网络超时时间和重试机制
+    export UV_HTTP_TIMEOUT=120; \
     if [ "$LIGHTEN" == "1" ]; then \
-        uv sync --python 3.10 --frozen; \
+        uv sync --python 3.10 --frozen || uv sync --python 3.10 --frozen; \
     else \
-        uv sync --python 3.10 --frozen --all-extras; \
+        uv sync --python 3.10 --frozen --all-extras || uv sync --python 3.10 --frozen --all-extras; \
     fi
 
 COPY web web
 COPY docs docs
 RUN --mount=type=cache,id=ragflow_npm,target=/root/.npm,sharing=locked \
-    cd web && npm install && npm run build
+    cd web && npm install --no-audit && npm run build
 
 COPY .git /ragflow/.git
 

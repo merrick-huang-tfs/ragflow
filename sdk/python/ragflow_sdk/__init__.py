@@ -30,7 +30,7 @@ from .modules.agent import Agent
 __version__ = importlib.metadata.version("ragflow_sdk")
 
 __all__ = [
-    "RAGFlow",
+    "RAG in CIC",
     "DataSet",
     "Chat",
     "Session",

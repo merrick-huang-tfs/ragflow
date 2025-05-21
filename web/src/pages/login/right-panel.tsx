@@ -1,6 +1,5 @@
-import { ReactComponent as Avatars } from '@/assets/svg/login-avatars.svg';
 import SvgIcon from '@/components/svg-icon';
-import { Flex, Rate, Space, Typography } from 'antd';
+import { Flex, Typography } from 'antd';
 import classNames from 'classnames';
 
 import { useTranslate } from '@/hooks/common-hooks';
@@ -20,10 +19,11 @@ const LoginRightPanel = () => {
         >
           {t('title')}
         </Title>
+        {/* 删除: </Title>
         <Text className={classNames(styles.pink, styles.loginDescription)}>
           {t('description')}
-        </Text>
-        <Flex align="center" gap={16}>
+        </Text> */}
+        {/* 删除: <Flex align="center" gap={16}>
           <Avatars></Avatars>
           <Flex vertical>
             <Space>
@@ -38,7 +38,7 @@ const LoginRightPanel = () => {
               {t('review')}
             </span>
           </Flex>
-        </Flex>
+        </Flex> */}
       </Flex>
     </section>
   );
